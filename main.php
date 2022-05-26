@@ -10,7 +10,7 @@
 	
 	// строка соединения с БД
 
-	$link = mysqli_connect('localhost', 'belphie', 'B_26_foreva','genshin_characters');
+	$link = mysqli_connect('localhost', 'belphie', '***','genshin_characters');
 
 	if (!$link) 
 	{ 
@@ -39,7 +39,7 @@
 		if(isset($_POST['name']) && isset($_POST['element']) && isset($_POST['weapon']) && isset($_POST['rarity']) 
 			&& $_POST['name'] != '' && $_POST['element'] != '' && $_POST['weapon'] != '' && $_POST['rarity'] != '')  
 		{
-		$link = mysqli_connect('localhost', 'belphie', 'B_26_foreva','genshin_characters');
+		$link = mysqli_connect('localhost', 'belphie', '***','genshin_characters');
 			if (!$link) 
 			{ 
 				echo('Ошибка соединения'); 
