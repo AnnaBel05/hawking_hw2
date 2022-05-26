@@ -11,7 +11,7 @@
 // проверка существования записи в бд
 
 if (isset($_GET["id"]) && !empty( $_GET['id'] ) ) {
-    $link = mysqli_connect('localhost', 'belphie', 'B_26_foreva','genshin_characters');
+    $link = mysqli_connect('localhost', 'belphie', '***','genshin_characters');
         if (!$link) { echo('Ошибка соединения'); }
         else { echo('Успешно установлено'); }
 
@@ -22,12 +22,6 @@ if (isset($_GET["id"]) && !empty( $_GET['id'] ) ) {
 
     if($res) {
         $row = mysqli_fetch_assoc($res);
-        // echo '<label>Character name</label>';
-        // echo $row['character_name'];
-        // echo $row['character_rarity'];
-        // echo $row['weapon_type'];
-        // echo $row['weapon_name'];
-        // echo $row['element_name'];
         $character_name = $row['character_name'];
         $character_rarity = $row['character_rarity'];
         $weapon_type = $row['weapon_type'];
