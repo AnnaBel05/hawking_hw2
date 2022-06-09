@@ -2,7 +2,9 @@
 
 namespace HW_2\Models;
 
-class Weapon
+use HW_2\interfaces\RarityInterface;
+
+class Weapon implements RarityInterface
 {
     private $id;
     private $type;
@@ -38,6 +40,13 @@ class Weapon
 	public function getRarity() 
     {
 		return $this->rarity;
+	}
+	/**
+	 *
+	 * @return string
+	 */
+	function writeRarity(): string {
+        return $this->getRarity();
 	}
 }
 

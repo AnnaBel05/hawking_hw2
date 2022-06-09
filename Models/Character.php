@@ -2,7 +2,9 @@
 
 namespace HW_2\Models;
 
-class Character 
+use HW_2\interfaces\RarityInterface;
+
+class Character implements RarityInterface
 {
     private $id;
     private $name;
@@ -46,6 +48,11 @@ class Character
 	public function getWeapon() 
     {
 		return $this->weapon;
+	}
+
+	function writeRarity(): string 
+    {
+        return $this->getRarity();
 	}
 }
 
