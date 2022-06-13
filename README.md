@@ -1,6 +1,6 @@
 # Hawking School Homework #6
 
-См. папку Converter - 
+См. папку Converter - https://github.com/AnnaBel05/hawking_hw2/tree/master/Converter
 
 # Hawking School Homework #5
 
