@@ -10,38 +10,44 @@
 
 // проверка существования записи в бд
 
-if (isset($_GET["id"]) && !empty( $_GET['id'] ) ) {
-    $link = mysqli_connect('localhost', 'belphie', 'B_26_foreva','genshin_characters');
-        if (!$link) { echo('Ошибка соединения'); }
-        else { echo('Успешно установлено'); }
+if (isset($_GET["id"]) && !empty( $_GET['id'] ) ) 
+{
+    require_once "config.php";
 
-    $id_db = mysqli_real_escape_string($link,$_GET['id']);
-    $res = mysqli_query($link,"SELECT Characters.id, Characters.character_name, Characters.character_rarity, weapons.weapon_type, weapons.weapon_name, elements.element_name FROM `Characters` JOIN `weapons` ON weapons.id = Characters.character_weapon JOIN `elements` ON elements.id = Characters.character_element WHERE Characters.id=$id_db;");  
+    $sql = "SELECT Characters.id, Characters.character_name, 
+        Characters.character_rarity, weapons.weapon_type, weapons.weapon_name, 
+        elements.element_name FROM `Characters` JOIN `weapons` 
+        ON weapons.id = Characters.character_weapon JOIN `elements` 
+        ON elements.id = Characters.character_element WHERE Characters.id = ?;";
 
-// создание переменных с данными из записи в БД
+    if ($stmt = $mysqli->prepare($sql))
+    {
+        $stmt->bind_param("i", $param_id);
 
-    if($res) {
-        $row = mysqli_fetch_assoc($res);
-        // echo '<label>Character name</label>';
-        // echo $row['character_name'];
-        // echo $row['character_rarity'];
-        // echo $row['weapon_type'];
-        // echo $row['weapon_name'];
-        // echo $row['element_name'];
-        $character_name = $row['character_name'];
-        $character_rarity = $row['character_rarity'];
-        $weapon_type = $row['weapon_type'];
-        $weapon_name = $row['weapon_name'];
-        $element_name = $row['element_name'];
+        $param_id = trim($_GET["id"]);
 
-        mysqli_free_result($res);
+        if ($stmt->execute()) 
+        {
+            $result = $stmt->get_result();
+
+            if($result->num_rows == 1) 
+            {
+                // создание переменных с данными из записи в БД
+
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+
+                $character_name = $row['character_name'];
+                $character_rarity = $row['character_rarity'];
+                $weapon_type = $row['weapon_type'];
+                $weapon_name = $row['weapon_name'];
+                $element_name = $row['element_name'];
+            }
+            else
+            {
+                header("location: error.php");
+            }
+        }
     }
-
-    mysqli_close($link);
-}
-else {
-    // header("location: hw_12.php");
-    // exit();
 }
 ?>
 

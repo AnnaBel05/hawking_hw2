@@ -15,20 +15,24 @@ class MainController
 
     public function __construct()
     {
-        $this->view = new View(__DIR__ . '/../../templates');
+        $this->view = new View(__DIR__ . '/../templates');
         $this->db = new Db();
     }
 
     public function main() 
     {
-        include __DIR__ . '/../../templates/main/main.php';
+        include __DIR__ . '/../templates/main/main.php';
+
+        // echo 'Main page';
 
         $characters = $this->db->query('SELECT Characters.id, character_name, character_rarity, 
             weapons.weapon_type, weapons.weapon_name, elements.element_name FROM `Characters` 
             JOIN `weapons` ON weapons.id = Characters.character_weapon JOIN `elements` 
             ON elements.id = Characters.character_element;');
 
+        // $characters = $this->db->query('SELECT * FROM Characters');
         var_dump($characters);
+        // $this->view->renderHtml('main/main.php', ['characters' => $characters]);
     }
 }
 
