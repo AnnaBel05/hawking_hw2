@@ -5,5 +5,8 @@
 **/robots.txt
 **/default.conf
 **/routes.php
+**/composer.json
+**/composer.lock
+**/vendor
 # **/main.php
 # **/read.php
