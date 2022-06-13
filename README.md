@@ -1,3 +1,7 @@
+# Hawking School Homework #6
+
+См. папку Converter - 
+
 # Hawking School Homework #5
 
 Проанализирован проект, созданный на прошлых занятиях. Т.к. проект небольшой,
