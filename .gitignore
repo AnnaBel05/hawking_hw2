@@ -1,6 +1,9 @@
 **/.env
 **/config
+**/config.php
 **/.htaccess
 **/robots.txt
+**/default.conf
+**/routes.php
 # **/main.php
 # **/read.php

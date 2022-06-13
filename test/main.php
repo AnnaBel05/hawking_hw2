@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+	<title> Test Characters </title>
 <script
 		src="https://code.jquery.com/jquery-1.12.3.min.js"
 		integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="
